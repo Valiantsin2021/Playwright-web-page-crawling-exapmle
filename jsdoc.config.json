@@ -1,0 +1,30 @@
+{
+  "plugins": ["plugins/markdown"],
+  "recurseDepth": 10,
+  "opts": {
+    "template": "node_modules/docdash",
+    "encoding": "utf8",
+    "destination": "./docs",
+    "recurse": true,
+    "verbose": true
+  },
+  "source": {
+    "include": ["./", "Readme.md"],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "exclude": ["node_modules", "allure-report", "docs"]
+  },
+  "sourceType": "module",
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  },
+  "docdash": {
+    "sort": false,
+    "search": true,
+    "collapce": true
+  }
+}

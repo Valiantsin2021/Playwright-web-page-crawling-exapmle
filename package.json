@@ -1,0 +1,48 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "postinstall": "echo \"All dependencies were installed sucessfully ✅ You can now run tests by typing: npm test\"",
+    "clean": "echo \"❌ Cleaning the reports and downloads folders\" && rimraf ./allure-report/* && rimraf ./allure-results/* && rimraf test-results/* && echo \"✅ All reports folders cleaned!\"",
+    "test": "npx playwright test",
+    "posttest": "echo \"⌚ Saving the allure report\" && allure generate --clean && echo \"⌚ Allure report saved in allure-report folder\"",
+    "report": "allure open",
+    "format": "echo Formatting the code ⌛ && prettier --write ./tests/**/*.js && echo \"✅ Code formatted, ready to commit!\"",
+    "lint": "echo Linting the code ⌛ && eslint ./**/*.js --fix && echo \"✅ Code linted, ready to commit!\"",
+    "docs": "jsdoc -d docs -c jsdoc.config.json"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.+(cjs|js|ts|tsx)": [
+      "eslint --fix"
+    ],
+    "**/*.+(cjs|js|ts|json)": [
+      "prettier --write"
+    ]
+  },
+  "keywords": [],
+  "author": "Valentin Lutchanka",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.1.0",
+    "@playwright/test": "1.38.1",
+    "allure-commandline": "2.24.1",
+    "allure-playwright": "2.9.2",
+    "docdash": "^2.0.1",
+    "dotenv": "16.0.3",
+    "eslint": "8.51.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-playwright": "0.16.0",
+    "eslint-plugin-prettier": "5.0.0",
+    "husky": "^4.3.8",
+    "prettier": "3.0.3",
+    "rimraf": "3.0.0"
+  }
+}

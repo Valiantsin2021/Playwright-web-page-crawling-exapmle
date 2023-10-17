@@ -1,0 +1,11 @@
+node_modules/
+report
+responses
+requests
+allure-report
+allure-results
+postman_collections
+playwright-report
+package-lock.json
+package.json
+Readme.md

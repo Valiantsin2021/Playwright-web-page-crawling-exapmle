@@ -1,0 +1,6 @@
+allure-report
+node_modules
+test-results
+playwright-report
+responses
+requests
