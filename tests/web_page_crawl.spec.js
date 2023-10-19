@@ -23,7 +23,9 @@ test.only(`crawl kinozal.tv 4k movies via ui 50 links per page with batch reques
         const responses = await Promise.all(requests)
         for (let body of responses) {
           try {
+            // @ts-ignore
             const name = (await body.text()).match(/<a href=".*"?id=\d{4,}" class=".*">([^<]+)<\/a>/)[1]
+            // @ts-ignore
             let img = (await body.text()).match(/<img[^>]* src="([^"]*)" class="p200"[^>]*alt="">/)[1]
             if (img[0] === '/') {
               img = `https://kinozal.tv${img}`
@@ -60,7 +62,9 @@ test('crawl kinozal.tv 4k movies via request', async ({ request }) => {
     const link = `https://kinozal.tv/details.php?id=${count}`
     try {
       const response = await request.get(link)
+      // @ts-ignore
       const name = (await response.text()).match(/<a href=".*"?id=\d{4,}" class="r0">([^<]+)<\/a>/)[1]
+      // @ts-ignore
       let img = (await response.text()).match(/<img[^>]* src="([^"]*)" class="p200"[^>]*alt="">/)[1]
       if (img[0] === '/') {
         img = 'https://kinozal.tv' + img
@@ -92,7 +96,9 @@ test('crawl kinozal.tv 4k movies via request with writable stream', async ({ req
     const link = `https://kinozal.tv/details.php?id=${count}`
     try {
       const response = await request.get(link)
+      // @ts-ignore
       const name = (await response.text()).match(/<a href=".*"?id=\d{4,}" class="r0">([^<]+)<\/a>/)[1]
+      // @ts-ignore
       let img = (await response.text()).match(/<img[^>]* src="([^"]*)" class="p200"[^>]*alt="">/)[1]
       if (img[0] === '/') {
         img = 'https://kinozal.tv' + img
@@ -128,7 +134,9 @@ test('crawl kinozal.tv 4k movies via request with writable stream sending reques
   const responses = await Promise.all(requests)
   for (let body of responses) {
     try {
+      // @ts-ignore
       const name = (await body.text()).match(/<a href=".*"?id=\d{4,}" class="r0">([^<]+)<\/a>/)[1]
+      // @ts-ignore
       let img = (await body.text()).match(/<img[^>]* src="([^"]*)" class="p200"[^>]*alt="">/)[1]
       if (img[0] === '/') {
         img = 'https://kinozal.tv' + img
