@@ -12,16 +12,16 @@ test(`crawl 4k movies via ui 12 links per page and writable stream`, async ({ pa
   await page.goto('https://gud.4-kfilm.cyou/filmi-4k/')
   async function crawl() {
     const elements = await page.locator('a.krat123-poster.img-box.with-mask').all()
-    for (let el of elements) {
+    for (let i = 0; i < elements.length; i++) {
       try {
-        const link = await el.getAttribute('href')
-        const name = await el.locator('img').getAttribute('alt')
-        let img = await el.locator('img').getAttribute('src')
+        const link = await elements[i].getAttribute('href')
+        const name = await elements[i].locator('img').getAttribute('alt')
+        let img = `https://gud.4-kfilm.cyou${await elements[i].locator('img').getAttribute('src')}`
         writableStream.write(JSON.stringify({ ['name']: name, ['link']: link, ['image']: img }))
-        writableStream.write(',')
+        elements.length < 12 && i === elements.length - 1 ? console.log('last link') : writableStream.write(',')
         console.log(link)
       } catch (err) {
-        console.log('error in response for ' + (await el.locator('img').innerText()), err.message)
+        console.log('error in response for ' + (await elements[i].locator('img').innerText()), err.message)
       }
     }
 

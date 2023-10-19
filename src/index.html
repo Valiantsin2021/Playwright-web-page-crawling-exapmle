@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pagination Example</title>
+    <style>
+        .page {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .header {
+            text-align: center;
+        }
+        .item {
+            flex: 1;
+            width: 25%; /* Set the width to 25% for 4 divs in a row */
+            margin: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            height: 640px; /* Set a fixed height for consistent div height */
+        }
+
+        .item h3 {
+            margin: 0;
+        }
+
+        .item a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            flex: 1;
+            overflow: hidden; /* Ensure images do not exceed the div */
+        }
+
+        .item img {
+            min-width: 400px;
+            min-height: 640px;
+            width: 100%; /* Make images fill the entire width */
+            height: 100%; /* Make images fill the entire height */
+            object-fit: cover; /* Maintain aspect ratio and cover the div */
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            margin: 0 5px;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+        .pagination button.active {
+            background: #007bff; /* Highlight the active button with blue color */
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+  <h2 class="header">4K Films parsed results</h2>
+    <div id="content"></div>
+    <div id="pagination" class="pagination"></div>
+
+    <script src="pagination.js"></script>
+</body>
+</html>

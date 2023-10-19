@@ -8,7 +8,7 @@
     "postinstall": "echo \"All dependencies were installed sucessfully ✅ You can now run tests by typing: npm test\"",
     "clean": "echo \"❌ Cleaning the reports and downloads folders\" && rimraf ./allure-report/* && rimraf ./allure-results/* && rimraf test-results/* && echo \"✅ All reports folders cleaned!\"",
     "test": "npx playwright test",
-    "posttest": "echo \"⌚ Saving the allure report\" && allure generate --clean && echo \"⌚ Allure report saved in allure-report folder\"",
+    "posttest": "echo \"⌚ Creating the html page with parsed results and Saving the allure report\" && npx browserify pagination.js -o ./src/pagination.js && allure generate --clean && echo \"⌚ Allure report saved in allure-report folder\"",
     "report": "allure open",
     "format": "echo Formatting the code ⌛ && prettier --write ./tests/**/*.js && echo \"✅ Code formatted, ready to commit!\"",
     "lint": "echo Linting the code ⌛ && eslint ./**/*.js --fix && echo \"✅ Code linted, ready to commit!\"",
@@ -20,7 +20,7 @@
     }
   },
   "lint-staged": {
-    "**/*.+(cjs|js|ts|tsx)": [
+    "tests/*.+(cjs|js|ts|tsx)": [
       "eslint --fix"
     ],
     "**/*.+(cjs|js|ts|json)": [
@@ -35,6 +35,7 @@
     "@playwright/test": "1.38.1",
     "allure-commandline": "2.24.1",
     "allure-playwright": "2.9.2",
+    "browserify": "^17.0.0",
     "docdash": "^2.0.1",
     "dotenv": "16.0.3",
     "eslint": "8.51.0",
