@@ -3,17 +3,17 @@
     function o(i, f) {
       if (!n[i]) {
         if (!e[i]) {
-          let c = 'function' == typeof require && require
+          var c = 'function' == typeof require && require
           if (!f && c) return c(i, !0)
           if (u) return u(i, !0)
-          let a = new Error("Cannot find module '" + i + "'")
+          var a = new Error("Cannot find module '" + i + "'")
           throw ((a.code = 'MODULE_NOT_FOUND'), a)
         }
-        let p = (n[i] = { exports: {} })
+        var p = (n[i] = { exports: {} })
         e[i][0].call(
           p.exports,
           function (r) {
-            let n = e[i][1][r]
+            var n = e[i][1][r]
             return o(n || r)
           },
           p,

@@ -1,3 +1,5 @@
+/* eslint-disable playwright/no-conditional-in-test */
+/* eslint-disable playwright/expect-expect */
 import { test, expect } from '@playwright/test'
 import fs from 'fs'
 test.only(`crawl kinozal.tv 4k movies via ui 50 links per page with batch requests via Promise.all() and writable stream`, async ({
