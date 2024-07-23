@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test'
 import fs from 'fs'
+import { expect as expectChai } from 'chai'
 /* eslint-disable playwright/no-conditional-in-test */
 /* eslint-disable playwright/expect-expect */
-test.only(`Parse and save the images using request, recursion and Promise.all() `, async ({ request, page }) => {
+test(`Parse and save the images using request, recursion and Promise.all() `, async ({ request, page }) => {
   test.setTimeout(3_600_000)
   await page.goto('https://altphotos.com/gallery/')
   const folderPath = './downloaded_images'
